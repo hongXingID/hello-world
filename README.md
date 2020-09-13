@@ -1,5 +1,3 @@
 # hello-world
-Just another repository
 
-
-"我刚刚修改了readme-edits"
+## this is my demo,welcome come to my GitHub!
