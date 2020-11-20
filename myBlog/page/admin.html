@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿星博客管理页</title>
+    <link rel="icon" href="./img/head.jpg">
+    <script src="./js/axios.js"></script>
+    <script src="./js/vue.js"></script>
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+
+<body>
+    <div class="bg"></div>
+    <div class="content">
+        <div class="header">
+            <h1>Personal blog management platform</h1>
+        </div>
+        <div class="main" id="admin">
+            <div class="main_left">
+                <ul>
+                    <li :class="clickIndex === index?'active':''" :data-index="index" @click="handleClick"
+                        v-for="(mainLeft,index) in mainLeftList">{{ mainLeft }}</li>
+
+                </ul>
+            </div>
+
+            <div class="main_right">
+
+                <div class="admin" :style="{display:adminDisplay}">
+                    <ul>
+                        <li>
+                            <span>添加一个管理员:</span>
+                            <input type="text" v-model="username" placeholder="添加管理员账号">
+                            <input type="text" v-model="password" placeholder="添加管理员密码">
+                            <button @click="addAdmin">添加</button>
+                        </li>
+                        <li v-for="(admin,index) in adminList">
+                            <span><b>&nbsp; 账号: &nbsp; </b>{{admin.loginId}}</span>
+                            <button :data-index="admin.id" @click="deleteAdmin">删除</button>
+                        </li>
+                    </ul>
+
+
+
+
+                </div>
+
+                <div class="blogPost" :style="{display:blogPostDisplay}">
+                    <a href="http://www.xiaoxingdemo.cn:6060/edit_blogPost.html" class="addBlogPost">新建文章</a>
+                    <ul>
+                        <li v-for="(blogPost,index) in blogPostList">
+                            <span><b>&nbsp; 文章标题: &nbsp; </b>{{blogPost.title}}</span>
+                            <button :data-index="blogPost.id" @click="deleteBlogPost">删除</button>
+                        </li>
+                    </ul>
+                    <div class="last_next">
+                        <span class="last" @click="lastpage">上一页</span>
+                        <span class="next" @click="nextpage">下一页</span>
+                    </div>
+
+                </div>
+
+                <div class="comment" :style="{display:commentDisplay}">
+
+                    <ul>
+                        <li v-for="(comment,index) in commentList">
+                            <span>{{comment.username}}:{{comment.content}}</span>
+                            <button :data-index="comment.id" @click="deleteComment">删除</button>
+                        </li>
+                    </ul>
+
+                    <div class="last_next">
+                        <span class="last" @click="lastpage">上一页</span>
+                        <span class="next" @click="nextpage">下一页</span>
+                    </div>
+                </div>
+
+                <div class="everyday" :style="{display:everydayDisplay}">
+                    <a href="http://www.xiaoxingdemo.cn:6060/edit_everyDay.html" class="addEveryDay">添加你的文案</a>
+                    <ul>
+                        <li v-for="(saying,index) in sayingList">
+                            <div v-html="saying.content"></div>
+                            <button :data-index="saying.id" @click="deleteSaying">删除</button>
+                        </li>
+                    </ul>
+                    <div class="last_next">
+                        <span class="last" @click="lastpage">上一页</span>
+                        <span class="next" @click="nextpage">下一页</span>
+                    </div>
+                </div>
+
+                <div class="message" :style="{display:messageDisplay}">
+                    <ul>
+                        <li v-for="(message,index) in messageList">
+                            <span>{{message.username}}:{{message.content}}</span>
+                            <button :data-index="message.id" @click="deleteMessage">删除</button>
+                        </li>
+                    </ul>
+
+                    <div class="last_next">
+                        <span class="last" @click="lastpage">上一页</span>
+                        <span class="next" @click="nextpage">下一页</span>
+                    </div>
+                </div>
+
+                <div class="tag" :style="{display:tagDisplay}">
+                    <ul>
+                        <li v-for="(tag,index) in tagList">
+                            <span>{{tag.tag}}</span>
+                            <button :data-index="tag.id" @click="deleteTag">删除</button>
+                        </li>
+                    </ul>
+
+                    <div class="last_next">
+                        <span class="last" @click="lastpage">上一页</span>
+                        <span class="next" @click="nextpage">下一页</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/admin.js"></script>
+</body>
+
+</html>

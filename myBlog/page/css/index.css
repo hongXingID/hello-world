@@ -1,0 +1,86 @@
+.every_day{
+    background-color:rgba(206 238 215,.6);
+    width: 96%;
+    text-align: left;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: "微软雅黑";
+    padding: 10px 15px;
+    opacity: .8;
+    margin: auto;
+}
+.every_day>span{
+    font-size: 20px;
+    margin: 10px 0;
+    display: inline-block;
+    color: slateblue;
+}
+
+.article_list{
+    width:100%;
+    border-radius: 5px;
+    margin-top: 15px;
+    
+}
+
+.article{
+    width: 100%;
+    border-radius: 5px;
+    text-align: left;
+    margin-top: 25px;
+    overflow: hidden;
+  padding: 20px 0px;
+    border-bottom:1px solid #44f8f8 ;
+}
+.article_title{
+    display: inline-block;
+    font-size: 26px;
+    color: #333;
+    padding:  15px 10px;
+    font-weight: 700;
+    text-align: left;
+    
+}
+
+.article_title:hover{
+    color: #337ab7;
+}
+
+.article_content{
+    color: #13102b;
+    padding: 0px 10px 20px 10px;
+    text-align: left;
+    word-wrap: break-word;
+    word-break:break-all ;
+    overflow: hidden;
+    line-height: 2em;
+    margin: 0.9em 0 0.5em;
+    padding-bottom: 0.6em;
+    font-weight: 400;
+    font-size: 17px;
+    vertical-align: baseline;
+}
+
+.article_about{
+    color: #388165f3;
+    width: 100%;
+    padding: 20px 10px;
+    font-size: 14px;
+}
+
+.article_head{
+    width: 26px;
+    height: 26px;
+    vertical-align: bottom;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.article_about_active{
+    color:#337ab7
+}
+.article_more{
+    padding-left: 10px;
+    font-size: 16px;
+    color: #209afc;
+}

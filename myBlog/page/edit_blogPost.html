@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>博文编辑</title>
+  <link rel="icon" href="./img/head.jpg">
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+  <style>
+    .modal-backdrop {
+      display: none;
+    }
+
+    .note-editor,
+    h1 {
+      width: 800px;
+      margin: auto;
+      border: none;
+      opacity: .7;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 500;
+      padding: 30px;
+      margin: 20px auto 20px auto;
+      color: #1ccccc;
+      text-align: center;
+    }
+
+    #btn {
+      display: block;
+      width: 120px;
+      height: 45px;
+      opacity: .7;
+      margin: 10px auto 0px auto;
+    }
+
+    .about_blog {
+      width: 600px;
+      margin: 20px auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .about_blog input {
+      display: inline-block;
+      border-radius: 5px;
+      width: 250px;
+      height: 45px;
+      opacity: .7;
+      color: #008c8c;
+      outline: none;
+      padding: 10px;
+
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+
+    }
+
+    body {
+      background: url("img/bg-edit.jpg");
+      background-size: cover;
+      background-position: 50% 50%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>博文编辑</h1>
+  <div class="about_blog">
+    <input type="text" id="input1" placeholder="请输入标题">
+    <input type="text" id="input2" placeholder="请输入标签">
+    <input type="text" id="input3" placeholder="请输入描述">
+  </div>
+  <div id="summernote"></div>
+  <button id="btn">提交</button>
+  <script>
+    $(document).ready(function () {
+      $('#summernote').summernote({
+        disableResizeEditor: true,
+        minHeight: 400,
+        maxHeight: 400
+      });
+    });
+
+    $('#btn').on("click", () => {
+      const title = $("#input1")[0].value;
+      const tags = $('#input2')[0].value.split(" ");
+      if(tags[1] == ""){
+        tags.splice(1,1)
+      }
+      const description = $('#input3')[0].value;
+      const content = $('#summernote').summernote('code')
+     $.ajax({
+        method: "post",   
+        url: "/api/blogPost",
+        data: {
+          title,
+          tags,
+          description,
+          content
+        }, 
+        dataType:"json",
+        success(resp) {
+          console.log(resp)
+        },
+        error(resp) {
+          console.log(resp)
+        }
+      })
+      window.alert("提交成功")
+    })
+  </script>
+</body>
+
+</html>

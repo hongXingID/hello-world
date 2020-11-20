@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+:root,html,body,.bg{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.bg{
+    width: 100%;
+    height: 100%;
+    background: url("./../img/bg-edit.jpeg") no-repeat;
+    background-size: cover;
+    background-position: center center;
+    opacity: .8;
+    position: fixed;
+    z-index: -1;
+}
+@keyframes run{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.login{
+    width: 500px;
+    overflow: hidden;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.login h1{
+    text-align: center;
+    font-size: 28px;
+    transition: all 2.5s;
+    animation: run 2.5s  ease;
+}
+.login input{
+    opacity: .75;
+    width: 50%;
+    margin:10px auto;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 10px;
+    display: block;
+    border: none;
+    outline-style: none;
+    transition: all 2.5s;
+    animation: run 2.5s  ease;
+}
+.login button{
+    width: 100px;
+    opacity: .75;
+    display: block;
+    border-radius: 8px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    font-weight:600;
+    border: none;
+    outline-style: none;
+    cursor: pointer;
+    transition: all 2.5s;
+    animation: run 2.5s  ease ;
+}
+.login button:hover{
+    background-color: rgb(180, 180, 177);
+}
+

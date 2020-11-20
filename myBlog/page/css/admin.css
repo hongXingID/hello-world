@@ -1,0 +1,199 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+::-webkit-scrollbar {
+    /*隐藏滚轮*/
+    display: none;
+}    
+:root,html,body,.bg{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+ 
+}
+.bg{
+    width: 100%;
+    height: 100%;
+    background: url("../img/bg-admin.jpg") no-repeat;
+    background-size: cover;
+    background-position: center center;
+    opacity: .8;
+    position: fixed;
+    z-index: -1;
+}
+.content{
+    width: 100%;
+    height: 100%;
+}
+.content .header{
+    height: 100px;
+    text-align: center;
+    background-color:  #5160ac;
+    opacity: .7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content .header h1{
+    font-size: 32px;
+    font-weight: 400;
+    padding: 10px 0;
+    color:#b8d8d8;
+}
+.content .main{
+    height: calc(100% - 100px);
+    display: flex;
+}
+.content .main .main_left{
+    display: block;
+    width: 250px;
+    height:100%;
+    background-color:  #5160ac;
+    opacity: .7;
+   
+}
+
+
+.content .main .main_left ul li{
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    margin: 10px 0;
+    font-size: 18px;
+    color: #e8e8e8;
+    cursor: pointer;
+    transition: all .6s;
+}
+.content .main .main_left ul li.active{
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: rgb(74 135 175);
+}
+.content .main .main_left ul li:hover{
+    color: rgb(107, 168, 168);
+}
+
+
+
+
+.content .main .main_right{
+    background-color:  #5160ac;
+    opacity: .7;
+    width: calc(100% - 250px);
+    height: 100%;
+    overflow: hidden;
+}
+
+
+/* 管理员管理界面 + 博文管理界面 + 评论管理界面 + 每日一句管理界面*/
+.content .main .main_right .admin,
+.content .main .main_right .blogPost,
+.content .main .main_right .comment,
+.content .main .main_right .everyday,
+.content .main .main_right .message,
+.content .main .main_right .tag{
+    display: inline-block;
+    height: 100%;
+    margin: 0 40px;
+    overflow-y: auto;
+    animation: run 2s  cubic-bezier(0.21, 0.81, 0.2, 0.05);
+}
+@keyframes run{
+    0%{
+        transform: translateX(-150%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.content .main .main_right ul li{
+    font-size: 18px;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.content .main .main_right .admin ul li input{
+    font-size: 16px;
+    padding: 10px 0px 10px 10px;
+    border-radius: 5px;
+    border: none;
+    outline-style: none;
+    cursor: pointer;
+}
+.content .main .main_right  button{
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    outline-style: none;
+    border: none;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+.content .main .main_right  button:hover{
+    background-color:#b170b1
+}
+
+.content .main .main_right .last_next{
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.content .main .main_right span.last,
+.content .main .main_right span.next{
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+    background-color: #4c63b7;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.content .main .main_right span.last:hover,
+.content .main .main_right span.next:hover{
+    background-color: #7c779b;
+    color: #f7ebe9;
+}
+
+/* 新建博文的按钮 */
+.content .main .main_right .blogPost a.addBlogPost,
+.content .main .main_right .everyday a.addEveryDay{
+   font-size: 24px;
+    width: 80px;
+    height: 50px;
+    margin-left: 20px;
+    color: #c5e5e5;
+    font-weight: 600;
+}
+.content .main .main_right .blogPost a.addBlogPost:hover{
+    color: #f9f9fb;
+}
+
+
+@media screen and (max-width: 767px){
+    .content .main .main_left{
+        width: 120px;
+    }
+    .content .main .main_right{
+        width: calc(100% - 120px);
+    }
+    .content .main .main_right .admin,
+    .content .main .main_right .blogPost,
+    .content .main .main_right .comment,
+    .content .main .main_right .everyday{
+        margin: 0px;
+    }
+}

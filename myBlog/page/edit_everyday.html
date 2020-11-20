@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>每日一句编辑</title>
+  <link rel="icon" href="./img/head.jpg">
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.css" rel="stylesheet">
+  <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.js"></script>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+  <style>
+    .modal-backdrop {
+      display: none;
+    }
+
+    .note-editor,
+    h1 {
+      width: 800px;
+      margin: auto;
+      border: none;
+      opacity: .7;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 500;
+      padding: 30px;
+      margin: 20px auto 20px auto;
+      color: #1ccccc;
+      text-align: center;
+    }
+
+    #btn {
+      display: block;
+      width: 120px;
+      height: 45px;
+      opacity: .7;
+      margin: 10px auto 0px auto;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+
+    }
+
+    body {
+      background: url("img/bg-edit.jpg");
+      background-size: cover;
+      background-position: 50% 50%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+ <div>
+  <h1>每日一句编辑</h1>
+
+  <div id="summernote">
+  </div>
+  <button id="btn">提交</button>
+ </div>
+
+  <script>
+    $(document).ready(function () {
+      $('#summernote').summernote({
+        disableResizeEditor: true,
+        minHeight: 400,
+        maxHeight: 400
+      });
+    });
+
+    $('#btn').on("click", () => {
+      let code = $('#summernote').summernote('code')
+      $.ajax({
+        url: "/api/saying",
+        method: "post",
+        data:{
+          content:code
+        },
+        success(resp) {
+          console.log(resp)
+        },
+        error(resp) {
+          console.log(resp)
+        }
+      })
+      window.alert("提交成功")
+    })
+  
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,452 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+h1,h2,h3{
+    font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, Verdana, 'Hiragino Sans GB', 'Noto Sans CJK SC', 'Source Han Sans CN', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
+    font-weight: 400;
+}
+.clearFix::after{
+    display: block;
+    clear: both;
+    content: "";
+}
+:root{
+    width: 100%;
+}
+html,body{
+    width:100%;
+}
+body{
+    position: relative;
+    font-family: "apercu",sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #202121;
+    background: rgb(244,247,246);
+    overflow-x: hidden;
+    text-align: center;
+}
+header{
+    position: fixed;
+    z-index: 10;
+    top:0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 90px;
+    line-height: 73px;
+    font-size: 13px;
+    font-weight: 400;
+    background-color: #e7e7e7;
+    border-color: #e7e7e7;
+    transition: all .5s;
+}
+header.active{
+    height: 65px;
+    background-color: #f0eeee;
+}
+.container{
+    position: relative;
+    width: 1170px;
+    height: 100%;
+    margin: auto;
+}
+.title{
+    position: absolute;
+    width: 250px;
+    left: 0;
+    height: 100%;
+    color:rgb(136, 123, 197);
+    margin: 0px 15px;
+    font-size: 21px;
+    font-weight: 500;
+    vertical-align: middle;
+}
+.title.active{
+    font-size: 19px;
+    transition: all .5s;
+}
+
+.title a,
+.menu li a{
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+.menu{
+    position: absolute;
+    left: 260px;
+    width: 220px;
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+}
+.menu li{
+    width: 70px;
+    height: 100%;
+    font-size: 17px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+   
+}
+.menu ul.active{
+    font-size: 15px;
+}
+.menu li::after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 70px;
+    left: -72px;
+    bottom: 5px;
+    border-bottom: 1px solid #494242;
+}
+.menu li:hover::after{
+   transition: all 1s;
+   left:0px
+}
+.menu>li>a{
+    color:#49c5b6;
+    font-size: 18px;
+}
+.menu>li>a:hover{
+    color: #333;
+   font-weight: 600;
+    background-color: transparent;
+    transition: all .1s;
+}
+.menu>li.active{
+    color: rgb(49, 49, 49);
+    font-weight: 600;
+}
+.search_bar{
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+}
+
+.search_bar > input{
+    display: inline-block;
+    position: absolute;
+    border-radius: 5px;
+    outline-style: none;
+    font-size: 15px;
+    top: 50%;
+    right: 10px;
+    transform: translate(-50%,-50%);
+
+    height: 30px;
+    padding: 6px 12px;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.search_bar > input:hover{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+.search_bar > button{
+    display: inline-block;
+    position: absolute;
+    font-size: 15px;
+    width: 54px;
+    height: 34px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    right: 0px;
+   
+    background-color: #fff;
+    cursor: pointer;
+    border:#fff;
+    font-weight: 400;
+}
+.search_bar button:hover{
+    border:1px solid #66afe9;
+    color: #333;
+    background-color: #bbb3b3;
+  
+    
+}
+
+.content{
+    position: relative;
+    padding-top: 90px;
+    width:1170px;
+    margin: 30px auto 0px auto;
+}
+
+.content_left{
+    float: left;
+    width: 66%;
+    padding: 0px 20px 0px 0px;
+    box-sizing: border-box;
+}
+
+#send_comment textarea{
+   padding: 5px;
+}
+
+.content_right{
+   float: right;
+   width: 34%;
+   padding: 0px 0px 0px 0px;
+}
+
+.right_module{
+    display: inline-block;
+    width: 100%;
+    color: rgb(83, 74, 74);
+    border-radius: 10px;
+    text-align: left;
+    padding: 0px 15px 25px 15px;
+    margin-bottom: 20px;
+}
+
+.right_module h2{
+    text-align: left;
+    font-size: 20px;
+    margin: 0px -15px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding:17px;
+    font-weight: 700;
+}
+
+.right_module > a{
+    font-size: 16px;
+    font-weight: 400;
+    color: #9f9f9f;
+    margin-right: 5px;
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+}
+.right_module > ul > li{
+    padding: 20px 0px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dbc6c6;
+   
+}
+
+
+
+.right_module>ul>li>a{
+    font-size: 16px;
+    color: #666;
+}
+#new_hot ul li a:hover{
+    color:rgb(115, 194, 113)
+}
+
+
+
+.right_module > ul > li > div{
+    padding: 5px 0px;
+}
+
+
+
+
+.right_module > ul > li > div> .comment_username{
+    color:#008c8c;
+    font-size: 18px;
+}
+.right_module > ul > li > div> .comment_time{
+    position: absolute;
+    right: 15px;
+    color: #337ab7;
+}
+.right_module > ul > li > .comment_content{
+    font-size: 16px;
+    margin: 10px 0;
+    padding: 5px 0;
+    color:#20302f;
+}
+.right_module >span{
+    width: 45%;
+    display: inline-block;
+    height: 40px;
+    margin: 10px 0;
+    text-align: center;
+}
+.right_module > span >a{
+    line-height: 40px;
+    font-size: 14px;
+    color: #3b3838;
+}
+
+
+
+footer{
+    width: 100%;
+    background-color:#eaeadc;
+    opacity: .7;
+    text-align: center;
+    padding: 30px 0px;
+    margin-top: 30px;
+}
+
+.footer>ul>li{
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+.footer > p{
+    margin-top: 10px;
+    color:#596061
+}
+
+.page_tool{
+    margin-top: 30px;
+    display: inline-block;
+}
+.page_tool >ul> li{
+    line-height: 40px;
+    background-color: rgb(250, 225, 229);
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.page_tool >ul> li:hover{
+    background-color: rgb(230, 211, 214);
+}
+.page_tool >ul> li.active{
+    background-color: rgb(199, 185, 185);
+}
+.now_page{
+    background-color: #333 !important;
+    color:#fff !important;
+}
+
+
+@media screen and (max-width: 1200px) {
+    header .container{
+        width: 100%;
+    }
+    .content_right{
+        display: none;
+    }
+    #search_bar{
+        display: none;
+    }
+    .content{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+   html{
+          font-size: 17.0667px !important;
+          overflow-x: hidden;
+    }
+    #send_comment textarea{
+        padding: 0;
+    }
+    .blog_comment{
+        padding: 10px 0px;
+    }
+    #blog_comments span{
+        padding-left: 0;
+    }
+    h2{
+        text-align: center;
+    }
+    #send_comment input{
+        width: 70%;
+    }
+   header{
+     position: unset;
+   }
+   .content{
+     padding-top:0
+   }
+   .description .about_title{
+       border-bottom: 0px !important;
+   }
+    header .container{
+        width: 100%;
+        font-size: 1rem;
+    }
+    .content_left{
+        width: 100%;
+        padding:0;
+    }
+    .content_right{
+        display: none;
+    }
+    #search_bar{
+        display: none;
+    }
+    #every_day{
+        padding:0px;
+    }
+    .content{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .content .content_left{
+        padding: 0;
+        width: 96%;
+    }
+    .content_left .description{
+        padding:0;
+    }
+    .content .content_left .article h2{
+   font-size: 22px;
+    }
+    .content .content_left .article p{
+        font-size: 14px;
+    }
+    .container .title{
+        display: none;
+    }
+    .container .menu{
+        width: 100%;
+        left: 0;
+    }
+    #blog_comments{
+        width: 96%;
+        margin: auto;
+    }
+    #pageTools ul{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    #pageTools ul li{
+        width:24px ;
+        height: 24px;
+        font-size: 12px;
+        line-height: 24px;
+    }
+    #blog_comments h2{
+        font-size: 16px;
+    }
+    #blog_comments .comment_content{
+        font-size: 15px;
+    }
+    #send_comment{
+        padding: 0;
+        margin: auto;
+    }
+}

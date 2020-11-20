@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="icon" href="./img/head.jpg">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <script src="./js/axios.js"></script>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <header id="header" :class="{active:scrollTop}">
+        <div class="container">
+            <div :class="{active:scrollTop}" class="title">
+                <a href="./admin.html">我的个人博客|技术博客</a>
+            </div>
+            <ul class="menu" :class="{active:scrollTop}">
+                <li ><a href="./index.html">首页</a></li>
+                <li class="active"><a href="./about.html">关于</a></li>
+                <li><a href="./message.html">留言</a></li>
+            </ul>
+            <div class="search_bar" id="search_bar">
+                <input v-model="word" type="text" placeholder="输入关键词查找">
+                <button @click="search">搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="content clearFix">
+        <div class="content_left">
+            <div class="description">
+                <div class="about_me">
+                    <div class="about_title">关于我</div>
+                    <p>作为一只切图仔</p>
+                    <p>入门前端一年有余</p>
+                    <p>学有余力时，博主会定时更新鸡汤，欢迎订阅</p>
+                </div>
+                <div>
+                    <div class="about_title">关于博客</div>
+                    <p>博主见识有限，如果博文有错误，欢迎指正</p>
+                    <p>QQ:1218424440</p>
+                </div>
+            </div>
+
+            <!-- 留言区域 -->
+            <div class="blog_comments" id="blog_comments">
+                <h2 class="blog_comments_msg">目前有{{count}}条留言</h2>
+                <div class="blog_comment" v-for="comment in commentList">
+                    <span><b>{{comment.username}}</b>：发表于{{handleTime(comment.createdAt)}} </span>
+                    <div class="comment_content">{{comment.content}}</div>
+                </div>
+
+
+            </div>
+
+            <!-- 分页 -->
+            <div class="page_tool" id="pageTools">
+                <ul>
+                    <li @click="toFirst">首页</li>
+                    <li @click="back">
+                        << </li>
+                    <li v-for="index in maxIndex" @click="handleClick"
+                        :class="{'active': clickIndex == firstIndex+index-1 }">{{ firstIndex+index-1}}</li>
+                    <li @click="go">>></li>
+                    <li @click="toEnd">尾页</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="content_right">
+            <div class="right_module" id="random_tags">
+                <h2>随机标签云</h2>
+                <a :href="tag.link" v-for="tag in tags"
+                    v-bind:style="{color:randomColor(),fontSize:randomSize()}">{{ tag.tag }}</a>
+            </div>
+            <div class="right_module" id="new_hot">
+                <h2>最近热门</h2>
+                <ul>
+                    <li v-for="title in titleList"><a v-bind:href="title.link">{{title.title}}</a></li>
+                </ul>
+
+
+
+
+
+
+            </div>
+            <div class="right_module" id="new_comments">
+                <h2>最新评论</h2>
+                <ul>
+                    <li v-for="comment in commentList">
+                        <div>
+                            <span class="comment_username">{{comment.username}}</span>
+                            <span class="comment_time">{{handleTime(comment.createdAt)}}</span>
+                        </div>
+                        <div class="comment_content">
+                            <p>
+                                {{comment.content}}
+                            </p>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="right_module" id="relation_blog">
+                <h2>友情链接</h2>
+                <span v-for="blog in blogs"><a :href="blog.link">{{blog.name}}</a></span>
+
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p><a href="www.xiaoxingdemo.cn">MySearch</a></p>
+        <p><a href="./index.html">阿星的个人博客</a></p>
+        <p>粤ICP备2020100716号 </p>
+       
+    </footer>
+    <script src="./js/message.js"></script>
+    <script src="./js/base.js"></script>
+</body>
+
+</html>
